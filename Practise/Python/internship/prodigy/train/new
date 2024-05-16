@@ -1,0 +1,37 @@
+/usr/bin/python3.10 /home/harshit/Desktop/c and java and python programming/python/ai_ml practise/ml/internship/p3try.py 
+
+Loading 0 images: 100%|██████████| 125/125 [00:16<00:00, 7.37it/s]
+
+Number of dog images: 12500
+
+Loading 1 images: 100%|██████████| 125/125 [00:19<00:00, 6.42it/s]
+
+Number of cat images: 12500
+
+Fitting 5 folds for each of 9 candidates, totalling 45 fits
+
+
+
+Process finished with exit code 137 (interrupted by signal 9:SIGKILL)
+
+/usr/bin/python3.10 /home/harshit/Desktop/c and java and python programming/python/ai_ml practise/ml/internship/p3try.py 
+
+Loading 0 images: 100%|██████████| 125/125 [00:16<00:00, 7.37it/s]
+
+Number of dog images: 12500
+
+Loading 1 images: 100%|██████████| 125/125 [00:19<00:00, 6.42it/s]
+
+Number of cat images: 12500
+
+Fitting 5 folds for each of 9 candidates, totalling 45 fits
+
+
+
+Process finished with exit code 137 (interrupted by signal 9:SIGKILL)
+
+
+
+
+
+what is the minning of that fitting line
