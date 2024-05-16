@@ -1,0 +1,32 @@
+#include <stdio.h>
+#include <math.h>
+
+double power(double base, double exponent);
+
+int main() {
+    double base, exponent;
+
+    printf("Enter base: ");
+    scanf("%lf", &base);
+
+    printf("Enter exponent: ");
+    scanf("%lf", &exponent);
+
+    double real = pow(base, exponent);
+    double maybe = power(base, exponent);
+    double error = ((maybe - real) / real) * 100;
+
+    printf("Result: %.15lf\n", maybe);
+    printf("Real calculation: %.15lf\n", real);
+    printf("Percentage error: %.15lf%%\n", error);
+
+    return 0;
+}
+
+double power(double base, double exponent) {
+    double result = 1.0;
+    for (double i = 0; i < fabs(exponent); i++) {
+        result *= exponent < 0 ? 1.0 / base : base;
+    }
+    return result;
+}

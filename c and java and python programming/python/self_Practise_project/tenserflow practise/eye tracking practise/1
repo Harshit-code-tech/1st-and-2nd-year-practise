@@ -1,0 +1,8 @@
+1) download cmake
+2)download dlib
+3)sudo apt-get install build-essential cmake
+sudo apt-get install libopenblas-dev liblapack-dev libx11-dev libgtk-3-dev
+4)install pyautogui
+5)install keyboard
+
+

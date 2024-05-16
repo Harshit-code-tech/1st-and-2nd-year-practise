@@ -1,0 +1,60 @@
+#include <stdio.h>
+#include <math.h>
+
+double power(double base, double exponent);
+double power_recursive(double base, int exponent);
+
+int main() {
+    double base, exponent, result, real_value, error;
+    
+    printf("Enter base: ");
+    scanf("%lf", &base);
+
+    printf("Enter exponent: ");
+    scanf("%lf", &exponent);
+
+    // calculate power using our implementation
+    result = power(base, exponent);
+
+    // calculate power using math library function
+    real_value = pow(base, exponent);
+
+    // calculate percentage error
+    error = fabs((real_value - result) / real_value) * 100.0;
+
+    // print results
+    printf("Result: %.6lf\n", result);
+    printf("Real value: %.6lf\n", real_value);
+    printf("Percentage error: %.6lf%%\n", error);
+
+    return 0;
+}
+
+double power(double base, double exponent) {
+    if (exponent == 0.0) {
+        return 1.0;
+    }
+    else if (exponent < 0.0) {
+        return 1.0 / power_recursive(base, -exponent);
+    }
+    else {
+        return power_recursive(base, exponent);
+    }
+}
+
+double power_recursive(double base, int exponent) {
+    if (exponent == 0) {
+        return 1.0;
+    }
+    else if (exponent == 1) {
+        return base;
+    }
+    else if (exponent % 2 == 0) {
+        double tmp = power_recursive(base, exponent / 2);
+        return tmp * tmp;
+    }
+    else {
+        double tmp = power_recursive(base, (exponent - 1) / 2);
+        return base * tmp * tmp;
+    }
+}

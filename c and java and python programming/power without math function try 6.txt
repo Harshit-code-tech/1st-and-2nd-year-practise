@@ -1,0 +1,76 @@
+#include <stdio.h>
+#include <math.h>
+
+double power(double base, double exponent);
+double power_recursive(double base, int exponent);
+double relative_error(double x, double y);
+
+int main() {
+    double base, exponent, result, real_value, error;
+    
+    printf("Enter base: ");
+    scanf("%lf", &base);
+
+    printf("Enter exponent: ");
+    scanf("%lf", &exponent);
+
+    if (fabs(exponent) < 10.0) {
+        result = power(base, exponent);
+    }
+    else {
+        result = power_recursive(base, (int) exponent);
+    }
+
+    real_value = pow(base, exponent);
+
+    error = relative_error(real_value, result);
+
+    printf("Result: %.12lf\n", result);
+    printf("Real value: %.12lf\n", real_value);
+    printf("Relative error: %.12lf%%\n", error * 100.0);
+
+    return 0;
+}
+
+double power(double base, double exponent) {
+    if (exponent == 0.0) {
+        return 1.0;
+    }
+    else if (exponent < 0.0) {
+        return 1.0 / power(base, -exponent);
+    }
+    else if (exponent <= 10.0) {
+        double result = 1.0;
+        double term = 1.0;
+        double x = exponent * log(base);
+        for (int i = 1; i <= 100; i++) {
+            term *= x / i;
+            result += term;
+        }
+        return result;
+    }
+    else {
+        return power_recursive(base, (int) exponent);
+    }
+}
+
+double power_recursive(double base, int exponent) {
+    if (exponent == 0) {
+        return 1.0;
+    }
+    else if (exponent == 1) {
+        return base;
+    }
+    else if (exponent % 2 == 0) {
+        double tmp = power_recursive(base, exponent / 2);
+        return tmp * tmp;
+    }
+    else {
+        double tmp = power_recursive(base, (exponent - 1) / 2);
+        return base * tmp * tmp;
+    }
+}
+
+double relative_error(double x, double y) {
+    return fabs((x - y) / x);
+}
